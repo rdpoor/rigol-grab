@@ -17,7 +17,7 @@ The setup process assumes you already have `git`, `Python` and `pipenv` set up
 on your machine.  In a shell window:
 
     > cd <your chosen directory>
-    > git clone ...
+    > git clone https://github.com/rdpoor/rigol-grab.git
     > pipenv install
 
 ## Running rigol_grab
