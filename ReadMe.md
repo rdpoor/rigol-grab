@@ -9,6 +9,8 @@ much in the way of software support for Linux and macOS systems.
 rigol_grab is a cross-platform Python-based script that lets you capture the
 contents of the Rigol Oscilloscope display to a .png file, such as this:
 
+![Rigol Screen Capture](/rigol.png)
+
 ## Setup
 
 The setup process assumes you already have `git`, `Python` and `pipenv` set up
@@ -42,9 +44,10 @@ In a shell window:
  * The program always throws an error upon exiting.  This appears to be benign.
  * Once every two or three times, the .png data is corrupted.  If this happens,
  just re-run the script.
+ * There's been zero testing on Linux or Windows systems.  But it might work.
 
  ## Support
 
-Feel free to post issues and feature requests in the Issues section.
+Feel free to post issues and feature requests in the [Issues section](https://github.com/rdpoor/rigol-grab/issues).
 
-And, if the spirit so moves you, please submit pull requests for enhancements.
+And if the spirit so moves you, please submit pull requests for enhancements.
