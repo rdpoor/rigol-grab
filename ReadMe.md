@@ -27,7 +27,9 @@ In a shell window:
 
     > cd <your chosen directory>/rigol-grab
     > pipenv shell
-    > python rigol_grab.py
+    > python rigol_grab.py --auto_open
+    
+Note that the `--auto_open` argument will cause the .png file to be opened immediately using the default viewer for your system.
 
 ## Options
 
