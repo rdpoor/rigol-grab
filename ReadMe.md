@@ -23,7 +23,7 @@ on your machine.  In a shell window:
 
 ## Running rigol_grab
 
-In a shell window:
+First, plug the Rigol 'scope into your computer via USB cable.  Then, in a shell window:
 
     > cd <your chosen directory>/rigol-grab
     > pipenv shell
