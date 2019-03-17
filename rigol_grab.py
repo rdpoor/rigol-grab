@@ -62,7 +62,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Rigol Screen Grabber")
     parser.add_argument('-f', '--filename', default='rigol.png',
                         help='name of output file')
-    parser.add_argument('-a', '--auto_open', action='store_false',
+    parser.add_argument('-a', '--auto_open', action='store_true',
                         help='automatically open output file')
     parser.add_argument('-v', '--verbose', action='store_true',
                         help='print additional output')
