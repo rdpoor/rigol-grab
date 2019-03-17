@@ -18,13 +18,14 @@ on your machine.  In a shell window:
 
     > cd <your chosen directory>
     > git clone https://github.com/rdpoor/rigol-grab.git
+    > cd rigol-grab
     > pipenv install
 
 ## Running rigol_grab
 
 In a shell window:
 
-    > cd <your chosen directory>
+    > cd <your chosen directory>/rigol-grab
     > pipenv shell
     > python rigol_grab.py
 
