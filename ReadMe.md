@@ -32,8 +32,8 @@ In a shell window:
 
 `rigol_grab.py` accepts command line arguments:
 
-    --verbose print additional information
-    --filename specify the pathname of the saved .png file
+    --verbose: print additional information
+    --filename <filename.png>: specify the pathname of the saved .png file (default: rigol.png)
     --auto_open: automatically open the .png using your system viewer
 
  ## Caveats
