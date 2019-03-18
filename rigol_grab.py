@@ -15,7 +15,7 @@ class RigolGrab(object):
     def __init__(self, verbose=False):
         self._verbose = verbose
         self._rigol = None
-        self._resource_manager = visa.ResourceManager('@ni')
+        self._resource_manager = visa.ResourceManager()
 
     def grab(self, filename='rigol.png', auto_open=True):
         # self.rigol().write(':STOP')

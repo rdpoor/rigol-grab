@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "c1331ddb22816da567a3d5d69d5cb7decbf3f189fa110ee8e466d7096efd96b0"
+            "sha256": "97aa84f59a7a3c225cebef6cd3dce005b8f7a1c29e8a3d491e32493b85953b80"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -125,6 +125,14 @@
             ],
             "index": "pypi",
             "version": "==1.9.1"
+        },
+        "pyvisa-py": {
+            "hashes": [
+                "sha256:1c918650a770a634434f6e8e0e1c097b5f0f80dc23bc60d3779c9890b4aa9150",
+                "sha256:3f907cadd10cd40955ed5aa90e42a5bf0c0d2abc6077895c940dbaf75b7666b7"
+            ],
+            "index": "pypi",
+            "version": "==0.3.1"
         },
         "six": {
             "hashes": [
