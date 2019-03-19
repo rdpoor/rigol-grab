@@ -47,6 +47,7 @@ class RigolGrab(object):
         return None
 
     def close(self):
+        self._rigol.close()
         self._resource_manager.close()
 
     @classmethod
