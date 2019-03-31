@@ -27,17 +27,24 @@ class RigolGrab(object):
 
     def rigol(self):
         if self._rigol == None:
-            name = self.find_rigol()
-            if name == None: self.err_out("Could not find Rigol.  Check USB?")
+            if(opts.port):
+                inst = 'TCPIP0::{}::INSTR'
+                name = inst.format(opts.port)
+            else:
+                name = self.find_rigol()
+                if name == None: self.err_out("Could not find Rigol. Check USB?")
             self.verbose_print('Opening', name)
-            self._rigol = self._resource_manager.open_resource(name)
+            try:
+                self._rigol = self._resource_manager.open_resource(name, write_termination='\n', read_termination='\n')
+            except:
+                self.err_out('Could not open oscilloscope')
         return self._rigol
 
     def verbose_print(self, *args):
         if (self._verbose): print(*args)
 
     def err_out(self, message):
-        sys.exit(message + ' ...quitting')
+        sys.exit(message + '...quitting')
 
     def find_rigol(self):
         resource_names = self._resource_manager.list_resources()
@@ -67,6 +74,8 @@ if __name__ == "__main__":
                         help='automatically open output file')
     parser.add_argument('-v', '--verbose', action='store_true',
                         help='print additional output')
+    parser.add_argument('-p', '--port',
+                        help='instrument IP address')
     opts = parser.parse_args()
 
     grabber = RigolGrab(verbose=opts.verbose)
