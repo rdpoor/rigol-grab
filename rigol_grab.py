@@ -7,6 +7,7 @@ import platform
 import subprocess
 import sys
 import visa
+import time
 
 class RigolGrab(object):
 
@@ -29,6 +30,7 @@ class RigolGrab(object):
         if self._rigol == None:
             name = "USB0::0x1ab1::0x04ce::*::INSTR"
             self._rigol = self._resource_manager.open_resource(name)
+            time.sleep(2.5)  # Wait for "USB Device Connected" label to disappear
         return self._rigol
 
     def verbose_print(self, *args):
