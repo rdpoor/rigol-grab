@@ -7,6 +7,7 @@ import platform
 import subprocess
 import sys
 import visa
+import time
 
 class RigolGrab(object):
 
@@ -27,10 +28,9 @@ class RigolGrab(object):
 
     def rigol(self):
         if self._rigol == None:
-            name = self.find_rigol()
-            if name == None: self.err_out("Could not find Rigol.  Check USB?")
-            self.verbose_print('Opening', name)
+            name = "USB0::0x1ab1::0x04ce::*::INSTR"
             self._rigol = self._resource_manager.open_resource(name)
+            time.sleep(2.5)  # Wait for "USB Device Connected" label to disappear
         return self._rigol
 
     def verbose_print(self, *args):
@@ -38,13 +38,6 @@ class RigolGrab(object):
 
     def err_out(self, message):
         sys.exit(message + ' ...quitting')
-
-    def find_rigol(self):
-        resource_names = self._resource_manager.list_resources()
-        self.verbose_print('Found', resource_names)
-        for name in resource_names:
-            if self.VID_PID in name: return name
-        return None
 
     def close(self):
         self._rigol.close()

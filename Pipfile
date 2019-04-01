@@ -8,6 +8,7 @@ pyvisa = "*"
 numpy = "*"
 matplotlib = "*"
 pyvisa-py = "*"
+pyusb = "*"
 
 [dev-packages]
 
