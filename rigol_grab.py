@@ -36,7 +36,8 @@ class RigolGrab(object):
                 inst = 'TCPIP0::{}::INSTR'
                 name = inst.format(opts.port)
             else:
-                name = self.find_rigol()
+                names = self._resource_manager.list_resources()
+                name = self.find_rigol(names)
                 if name == None: self.err_out("Could not find Rigol. Check USB?")
             self.verbose_print('Opening', name)
             try:
