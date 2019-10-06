@@ -32,14 +32,17 @@ class RigolGrab(object):
         Find and open the instrument with matching VID_PID
         '''
         if self._rigol == None:
-            names = self._resource_manager.list_resources()
-            name = self.find_rigol(names)
-            if name == None:
-                self.err_out('Could not find Rigol scope in ' + str(names))
+            if(opts.port):
+                inst = 'TCPIP0::{}::INSTR'
+                name = inst.format(opts.port)
             else:
-                self.verbose_print('Found Rigol scope at', name)
-            self._rigol = self._resource_manager.open_resource(name)
-            time.sleep(2.5)  # Wait for "USB Device Connected" label to disappear
+                name = self.find_rigol()
+                if name == None: self.err_out("Could not find Rigol. Check USB?")
+            self.verbose_print('Opening', name)
+            try:
+                self._rigol = self._resource_manager.open_resource(name, write_termination='\n', read_termination='\n')
+            except:
+                self.err_out('Could not open oscilloscope')
         return self._rigol
 
     def find_rigol(self, names):
@@ -53,7 +56,7 @@ class RigolGrab(object):
         if (self._verbose): print(*args)
 
     def err_out(self, message):
-        sys.exit(message + ' ...quitting')
+        sys.exit(message + '...quitting')
 
     def close(self):
         self._rigol.close()
@@ -76,6 +79,8 @@ if __name__ == '__main__':
                         help='automatically view output file')
     parser.add_argument('-v', '--verbose', action='store_true',
                         help='print additional output')
+    parser.add_argument('-p', '--port',
+                        help='instrument IP address')
     opts = parser.parse_args()
 
     grabber = RigolGrab(verbose=opts.verbose)
