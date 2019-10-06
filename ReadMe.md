@@ -47,7 +47,7 @@ Note that the `--auto_view` argument will cause the .png file to be opened immed
  * The program always throws an error upon exiting.  This appears to be benign.
  * Once every two or three times, the .png data is corrupted.  If this happens,
  just re-run the script.
- * There's been zero testing on Linux or Windows systems.  But it might work.
+ * There's been zero testing on Windows systems.  But it might work.
 
  ## Support
 
