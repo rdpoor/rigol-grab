@@ -27,9 +27,9 @@ First, plug the Rigol 'scope into your computer via USB cable.  Then, in a shell
 
     > cd <your chosen directory>/rigol-grab
     > pipenv shell
-    > python rigol_grab.py --auto_open
-    
-Note that the `--auto_open` argument will cause the .png file to be opened immediately using the default viewer for your system.
+    > python rigol_grab.py --auto_view
+
+Note that the `--auto_view` argument will cause the .png file to be opened immediately using the default viewer for your system.
 
 ## Options
 
@@ -37,7 +37,7 @@ Note that the `--auto_open` argument will cause the .png file to be opened immed
 
     --verbose: print additional information
     --filename <filename.png>: specify the pathname of the saved .png file (default: rigol.png)
-    --auto_open: automatically open the .png using your system viewer
+    --auto_view: automatically open the .png using your system viewer
 
  ## Caveats
 
