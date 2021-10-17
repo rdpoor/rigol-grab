@@ -7,11 +7,10 @@ import platform
 import subprocess
 import sys
 import pyvisa
-import time
 
 class RigolGrab(object):
 
-    VID_PID = '0x1AB1::0x04CE'.lower()
+    VID_PIDS = ['0x1AB1::0x04CE'.lower(), '6833::1230']
 
     def __init__(self, verbose=False):
         self._verbose = verbose
@@ -51,7 +50,11 @@ class RigolGrab(object):
         Find resource with matching VID_PID among list of names, or None
         if there is no match.
         '''
-        return next((s for s in names if self.VID_PID in s.lower()), None)
+        for name in names:
+            for vid_pid in self.VID_PIDS:
+                if vid_pid in name.lower():
+                    return name
+        return None
 
     def verbose_print(self, *args):
         if (self._verbose): print(*args)

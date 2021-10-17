@@ -21,6 +21,11 @@ on your machine.  In a shell window:
     > cd rigol-grab
     > pipenv install
 
+It's also recommended to upgrade your scope's firmware. To check you firmware
+version on the scope. Go to Utility -> System -> System Info. Check the latest
+available firmware from [here](https://www.rigolna.com/firmware/) and
+instructions how to do the upgrade.
+
 ## Running rigol_grab
 
 First, plug the Rigol 'scope into your computer via USB cable or connect it to your network and note its IP address.  Then, in a shell window use these commands for a USB connection:
