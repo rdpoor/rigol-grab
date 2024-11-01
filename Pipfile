@@ -4,13 +4,9 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-pyvisa = "*"
-numpy = "*"
-matplotlib = "*"
 pyvisa-py = "*"
-pyusb = "*"
 
 [dev-packages]
 
 [requires]
-python_version = "3.7"
+python_version = "3"
