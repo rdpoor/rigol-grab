@@ -1,4 +1,4 @@
-# NOTE: please switch to [the grab-o-scope project](https://github.com/rdpoor/grab-o-scope).
+# NOTE: please switch to the [grab-o-scope project](https://github.com/rdpoor/grab-o-scope).
 
 _As of November 2024, this repository will no longer be updated. 
 It has been superseded by the [grab-o-scope project](https://github.com/rdpoor/grab-o-scope) 
