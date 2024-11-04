@@ -1,3 +1,12 @@
+# NOTE: please switch to [the grab-o-scope project](https://github.com/rdpoor/grab-o-scope).
+
+_As of November 2024, this repository will no longer be updated. 
+It has been superseded by the [grab-o-scope project](https://github.com/rdpoor/grab-o-scope) 
+which now provides support for multiple oscilloscopes, including the Rigol DS1054Z and 
+the Rigol DHO924.  Head on over there, and thank you for your support!_
+  
+_- rdpoor November 2024_
+
 # rigol_grab
 _Capture Rigol DS1054Z Oscilloscope Display as a .png file, for MacOS,
 Linux and Windows_
