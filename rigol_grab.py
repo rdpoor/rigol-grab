@@ -11,7 +11,8 @@ import time
 
 class RigolGrab(object):
 
-    VID_PID = '0x1AB1::0x04CE'.lower()
+    VID = 0x1AB1
+    PID = 0x04CE
 
     def __init__(self, verbose=False):
         self._verbose = verbose
@@ -20,6 +21,7 @@ class RigolGrab(object):
 
     def grab(self, filename='rigol.png', auto_view=True):
         # self.rigol().write(':STOP')
+        self.verbose_print('Identification: ' + self.rigol().query('*IDN?'))
         buf = self.rigol().query_binary_values(':DISP:DATA? ON,0,PNG', datatype='B')
         with open(filename, 'wb') as f:
             self.verbose_print('Capturing screen to', filename)
@@ -36,22 +38,28 @@ class RigolGrab(object):
                 inst = 'TCPIP0::{}::INSTR'
                 name = inst.format(opts.port)
             else:
-                names = self._resource_manager.list_resources()
-                name = self.find_rigol(names)
+                name = self.find_rigol()
                 if name == None: self.err_out("Could not find Rigol. Check USB?")
             self.verbose_print('Opening', name)
             try:
                 self._rigol = self._resource_manager.open_resource(name, write_termination='\n', read_termination='\n')
+                
+                '''
+                Following some advice from:
+                    https://github.com/pyvisa/pyvisa/issues/481
+                this seems to be the maximum chunk size Rigol (reliably?) 
+                supports over USB.
+                '''
+                self._rigol.chunk_size = 64 - 12
             except:
                 self.err_out('Could not open oscilloscope')
         return self._rigol
 
-    def find_rigol(self, names):
-        '''
-        Find resource with matching VID_PID among list of names, or None
-        if there is no match.
-        '''
-        return next((s for s in names if self.VID_PID in s.lower()), None)
+    def find_rigol(self):
+        # Note: VISA regular expressions are case insensitive
+        visa_match_expression = f'?*::(0x{self.VID:0{4}x}|{self.VID})::(0x{self.PID:0{4}x}|{self.PID})::?*::INSTR'
+        names = self._resource_manager.list_resources(visa_match_expression)
+        return names[0] if names else None
 
     def verbose_print(self, *args):
         if (self._verbose): print(*args)
